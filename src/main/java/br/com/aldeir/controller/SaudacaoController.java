@@ -18,8 +18,6 @@ public class SaudacaoController {
 	 @RequestMapping("/saudacao")
 	 public Saudacao greeting(@RequestParam(value = "nome", defaultValue = "World") String nome) {
 		   
-		   
-		 
 		   return new Saudacao(counter.incrementAndGet(),
              String.format(template,nome));
 	 }
