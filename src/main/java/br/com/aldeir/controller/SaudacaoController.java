@@ -11,7 +11,7 @@ import br.com.aldeir.model.Saudacao;
 @RestController
 public class SaudacaoController {
   
-	 private static final String template = "hello, %s!";
+	 private static final String template = "hello1, %s!";
 	 private static final AtomicLong  counter = new AtomicLong();
 	 
 	
