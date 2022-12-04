@@ -12,6 +12,7 @@ spring:
   hibernate:
    ddl-auto: update
   show-sql: true
+  open-in-view: false
   properties:
    hibernate:
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -20,7 +21,3 @@ spring:
   schemas: cambio_service
   user: root
   password: dider5050
-springdoc:
- show-actuator: true
- api-docs:
-  path: cambio-service/v3/api-docs
