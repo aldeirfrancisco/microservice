@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 
 
 
@@ -19,7 +19,7 @@ public class FooBarController {
 	private Logger logger = LoggerFactory.getLogger(FooBarController.class);
 		
 	@GetMapping("/foo-bar")
-	@RateLimiter(name = "default")
+	@Bulkhead(name = "default")
 	public String findBook() {
 		logger.info("request to foo bar received!");
 //		new RestTemplate().getForEntity("http://localhost:8080/foo-bar" , String.class);
