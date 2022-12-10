@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 
@@ -22,8 +23,8 @@ public class FooBarController {
 	@Bulkhead(name = "default")
 	public String findBook() {
 		logger.info("request to foo bar received!");
-//		new RestTemplate().getForEntity("http://localhost:8080/foo-bar" , String.class);
-    return "Foo-Bar!!";
+		var response =	new RestTemplate().getForEntity("http://localhost:8100/foo-bar" , String.class);
+	    return response.getBody();
 	
 	}
 	public String fallbackMethod(Exception ex) {
