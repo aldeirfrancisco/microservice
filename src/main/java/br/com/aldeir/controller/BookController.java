@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.aldeir.model.Book;
 import br.com.aldeir.proxy.CambioProxy;
 import br.com.aldeir.repository.BookRepository;
-import br.com.aldeir.response.Cambio;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Book endPoint")
 @RestController
 @RequestMapping("book-service")
 public class BookController {
@@ -30,6 +31,7 @@ public class BookController {
 	
 	//http://localhost:8100/book-service/1/BRL
 	
+	@Operation(summary = "Find a specific book by your ID")
 	@GetMapping("/{id}/{currency}")
 	private Book findBook( @PathVariable("id") Long id,
 			               @PathVariable("currency") String currency) {
