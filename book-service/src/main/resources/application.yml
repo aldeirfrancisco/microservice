@@ -1,0 +1,50 @@
+server:
+ port: 8100
+eureka:
+ client:
+  service-url:
+   defaultZone: http://localhost:8761/eureka
+resilience4j:
+ bulkhead:
+  instances:
+   default:
+    max-concurrent-calls: 10
+ retry:
+  instances:
+   foo-bar:
+    max-attempts: 5
+    wait-duration: 1s
+    enable-exponential-backoff: true
+spring:
+ application:
+  name: book-service
+ datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/book_service?useTimezone=true&serverTimezone=UTC
+  username: root
+  password: dider5050
+ jackson:
+  default-property-inclusion: NON_NULL
+  serialization:
+   fail-on-empty-beans: false
+ jpa:
+  hibernate:
+   ddl-auto: update
+  show-sql: true
+  open-in-view: false
+  properties:
+   hibernate:
+    dialect: org.hibernate.dialect.MySQL57Dialect
+ flyway:
+  url: jdbc:mysql://localhost:3306/book_service?useTimezone=true&serverTimezone=UTC
+  schemas: book_service
+  user: root
+  password: dider5050
+ sleuth:
+  sampler:
+   probability: 1.0
+springdoc:
+ show-actuator: true
+ api-docs:
+  path: book-service/v3/api-docs
+
