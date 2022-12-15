@@ -19,9 +19,9 @@ spring:
   open-in-view: false
   properties:
    hibernate:
-    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    dialect: org.hibernate.dialect.MySQL57Dialect
  flyway:
-  url: jdbc:mysql://localhost:3306/
+  url: jdbc:mysql://localhost:3306/cambio_service?useTimezone=true&serverTimezone=UTC
   schemas: cambio_service
   user: root
   password: dider5050
